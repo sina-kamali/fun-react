@@ -37,12 +37,16 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <h1>Lets Managing Some Lists At the bottom!</h1>
-        <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {
-          this.state.showPerson ?
+    const style = {
+      backgroundColor: 'white',
+      font:'iherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+    let persons = null;
+    if(this.state.showPerson){
+      persons = (
         <div>
           <Person
           name={this.state.persons[0].name}
@@ -60,9 +64,15 @@ class App extends Component {
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
         />
-        </div> : null
-        }
+        </div> 
         
+      );
+    }
+    return (
+      <div className="App">
+        <h1>Lets Managing Some Lists At the bottom!</h1>
+        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}   
       </div>
     );
   }
